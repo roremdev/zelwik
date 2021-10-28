@@ -28,4 +28,4 @@ jobs:
           port: 4531
           script: |
             ls -al
-            sudo docker ps -a
+            echo arkus@123 | sudo -S docker ps -a
