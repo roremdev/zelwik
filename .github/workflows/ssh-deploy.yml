@@ -16,8 +16,14 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
       - name: Adding Known Hosts
-        run: ssh-keyscan -p ${{ secrets.SSH_PORT }} -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-      - name: List directory
-        run: ls -la
+        run: ssh-keyscan -p 4531 -H 187.191.25.39 >> ~/.ssh/known_hosts
       - name: Deploy with rsync
-        run: rsync -avz -e 'ssh -p ${{ secrets.SSH_PORT }}' public/ ambry@${{ secrets.SSH_HOST }}:/home/ambry/
+        run: rsync -avz -e 'ssh -p 4531' public/ ambry@187.191.25.39:/home/ambry/
+      - name: Executing remote command
+        uses: appleboy/ssh-action@master
+        with:
+          host: 187.191.25.39
+          username: ambry
+          password: arkus@123
+          port: 4531
+          script: ls -al
