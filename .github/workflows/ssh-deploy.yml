@@ -26,4 +26,6 @@ jobs:
           username: ambry
           password: arkus@123
           port: 4531
-          script: ls -al
+          script: |
+            ls -al
+            sudo docker ps -a
