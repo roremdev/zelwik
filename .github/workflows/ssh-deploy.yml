@@ -15,7 +15,9 @@ jobs:
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
+      - name: List Files
+        run: ls -la
       - name: 🚧  Adding Known Hosts
-        run: ssh-keyscan -p 4531 -H 187.191.25.39 >> ~/.ssh/known_hosts
+        run: ssh-keyscan -p 1002 -H 187.191.25.39 >> ~/.ssh/known_hosts
       - name: 📦  Deploy with rsync
-        run: rsync -avz -e 'ssh -p 4531' . ambry@187.191.25.39:/home/ambry/production
+        run: rsync -avz -e 'ssh -p 1002' . ambry@187.191.25.39:/home/ambry/production
