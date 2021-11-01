@@ -2,8 +2,9 @@ services:
     node:
         build:
             context: .
-            target: production
+            target: ${MODE}
         environment:
-            - NODE_ENV=production
+            - NODE_ENV=${MODE}
+            - PORT=${PORT}
         ports:
-        - '8080:8080'
+        - ${PORT}:${PORT}

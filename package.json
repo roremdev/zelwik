@@ -13,7 +13,11 @@
         "test": "NODE_ENV=test jest test/index.test.js --forceExit",
         "prebuild": "rm -rf ./dist",
         "build": "babel ./src -d ./dist --ignore node_modules,test",
-        "start": "pm2-runtime start ./dist/index.js"
+        "start": "pm2-runtime start ./dist/index.js",
+        "dev:up": "docker-compose --env-file src/config/.env.dev up -d",
+        "dev:down": "docker-compose down --rmi all",
+        "prod:up": "docker-compose --env-file src/config/.env up -d",
+        "prod:down": "docker-compose down --rmi all"
     },
     "repository": {
         "type": "git",
